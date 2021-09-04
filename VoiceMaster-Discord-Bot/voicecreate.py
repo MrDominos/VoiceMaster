@@ -1,13 +1,23 @@
 import discord
 from discord.ext import commands
 import traceback
-import sys
+import sys, time, os
+from sys import platform
 
-bot = commands.Bot(command_prefix=".")
+if platform == "win32":
+    clear = "cls"
+elif platform == "linux" or platform == "linux2":
+    clear = "clear"
+else:
+    clear = "cls"
+
+
+
+bot = commands.Bot(command_prefix=".", intents=discord.Intents.all())
 
 bot.remove_command("help")
 
-DISCORD_TOKEN = 'ODExMDgyNzYxODk1OTM2MDUy.YCtBrw.O5_9H17ve_apKJSI98iOmjHn7fY'
+DISCORD_TOKEN = 'ODExMDgyNzYxODk1OTM2MDUy.YCtBrw.zktCgGab44KAmm0IZwLgxSVyy58'
 
 initial_extensions = ['cogs.voice']
 
@@ -21,9 +31,15 @@ if __name__ == '__main__':
 
 @bot.event
 async def on_ready():
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="You"))
     print('Logged in as')
     print(bot.user.name)
     print(bot.user.id)
     print('------')
-
-bot.run(DISCORD_TOKEN)
+kunci = input("Masukan Passwordmu: ")
+if kunci == "@nj#l#21":
+    print("Berhasil login!")
+    print("Bot dijalankan dalam 3 detik")
+    time.sleep(3)
+    os.system(clear)
+    bot.run(DISCORD_TOKEN)
