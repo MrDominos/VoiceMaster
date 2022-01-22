@@ -17,7 +17,7 @@ bot = commands.Bot(command_prefix=".", intents=discord.Intents.all())
 
 bot.remove_command("help")
 
-DISCORD_TOKEN = 'ODExMDgyNzYxODk1OTM2MDUy.YCtBrw.zktCgGab44KAmm0IZwLgxSVyy58'
+DISCORD_TOKEN = os.environ.get("TOKEN")
 
 initial_extensions = ['cogs.voice']
 
